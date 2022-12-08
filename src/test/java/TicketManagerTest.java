@@ -47,6 +47,14 @@ public class TicketManagerTest {
             300
     );
 
+    Ticket ticket6 = new Ticket(
+            6,
+            8_000,
+            "LED",
+            "VKO",
+            130
+    );
+
     @BeforeEach
     public void setUp() {
         manager.add(ticket1);
@@ -78,6 +86,16 @@ public class TicketManagerTest {
     @Test
     public void shouldFindOneTicket() {
         Ticket[] expected = {ticket1};
+        Ticket[] actual = manager.findAll("LED", "VKO");
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldFindEqualPrices() {
+        manager.add(ticket6);
+        Ticket[] expected = {ticket1, ticket6};
         Ticket[] actual = manager.findAll("LED", "VKO");
 
         Assertions.assertArrayEquals(expected, actual);
