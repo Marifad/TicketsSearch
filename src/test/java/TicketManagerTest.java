@@ -47,6 +47,8 @@ public class TicketManagerTest {
             300
     );
 
+    TicketTimeComparator comparator = new TicketTimeComparator();
+
     @BeforeEach
     public void setUp() {
         manager.add(ticket1);
@@ -54,13 +56,12 @@ public class TicketManagerTest {
         manager.add(ticket3);
         manager.add(ticket4);
         manager.add(ticket5);
-
     }
 
     @Test
     public void shouldFindTickets() {
-        Ticket[] expected = {ticket3, ticket2, ticket5};
-        Ticket[] actual = manager.findAll("IST", "SVO");
+        Ticket[] expected = {ticket2, ticket5, ticket3};
+        Ticket[] actual = manager.findAll("IST", "SVO", comparator);
 
         Assertions.assertArrayEquals(expected, actual);
 
@@ -69,7 +70,7 @@ public class TicketManagerTest {
     @Test
     public void shouldNotFindTickets() {
         Ticket[] expected = {};
-        Ticket[] actual = manager.findAll("IST", "LED");
+        Ticket[] actual = manager.findAll("IST", "LED", comparator);
 
         Assertions.assertArrayEquals(expected, actual);
 
@@ -78,7 +79,7 @@ public class TicketManagerTest {
     @Test
     public void shouldFindOneTicket() {
         Ticket[] expected = {ticket1};
-        Ticket[] actual = manager.findAll("LED", "VKO");
+        Ticket[] actual = manager.findAll("LED", "VKO", comparator);
 
         Assertions.assertArrayEquals(expected, actual);
 
