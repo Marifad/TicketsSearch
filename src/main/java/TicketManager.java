@@ -4,6 +4,7 @@ import java.util.Comparator;
 public class TicketManager {
     private TicketRepository repo;
     private Ticket[] tickets = new Ticket[0];
+//    private TicketTimeComparator comparator = new TicketTimeComparator();
 
     public TicketManager(TicketRepository repo) {
         this.repo = repo;
@@ -29,6 +30,7 @@ public class TicketManager {
 
             }
         }
+        Arrays.sort(result);
         Arrays.sort(result, comparator);
         return result;
 
@@ -43,14 +45,6 @@ public class TicketManager {
             return false;
         }
     }
-/*
-    public boolean matchesTo(Ticket ticket, String to) {
-        if (ticket.getTo().contains(to)) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
 
 }
 

@@ -18,30 +18,6 @@ public class TicketRepository {
 
         return tickets;
     }
-/* НЕ используются в данной задаче
-
-    public Ticket findById(int id) {
-
-        for (Ticket ticket : tickets) {
-            if (ticket.getId() == id) {
-                return ticket;
-            }
-        }
-        return null;
-
-    }
-
-    public void removeById(int id) {
-        Ticket[] tmp = new Ticket[tickets.length - 1];
-        int copyToIndex = 0;
-        for (Ticket item : tickets) {
-            if (item.getId() != id) {
-                tmp[copyToIndex] = item;
-                copyToIndex++;
-            }
-        }
-        tickets = tmp;
-    }*/
 
 }
 
